@@ -24,6 +24,19 @@ CP_PASS="${CP_PASS:-wark}"
 # Net effect: any visitor with the link can browse & download (no login);
 # only the `admin` account can upload/delete/rename. This is the safe default
 # for a PUBLIC file server — anonymous never gets write/delete.
+# CORS/login fix: the Railway edge terminates TLS, so the browser's login
+# form posts with Origin: https://<domain>. Inside the container copyparty
+# speaks plain HTTP, so its CORS gate only trusts the http:// origin by
+# default and 403s the login ("rejected by cors-check"). Whitelisting the
+# public https origin (plus declaring we are behind an https proxy) unlocks
+# login while keeping the origin check strict for every other site.
+# Only applied when RAILWAY_PUBLIC_DOMAIN is set (i.e. on Railway), so local
+# runs keep the stock behavior.
+ACAO_ARGS=""
+if [ -n "${RAILWAY_PUBLIC_DOMAIN:-}" ]; then
+  ACAO_ARGS="--acao https://${RAILWAY_PUBLIC_DOMAIN} --xf-proto-fb https"
+fi
+
 exec python3 -m copyparty \
   --chdir /srv \
   -a "admin:${CP_PASS}" \
@@ -32,4 +45,5 @@ exec python3 -m copyparty \
   -p "$PORT" \
   --http-only \
   --no-crt \
-  --no-thumb
+  --no-thumb \
+  $ACAO_ARGS
