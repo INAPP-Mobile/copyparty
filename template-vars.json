@@ -1,0 +1,12 @@
+{
+  "PORT": {
+    "defaultValue": "3923",
+    "description": "HTTP port Railway routes to. Must equal the copyparty -p flag (leave default).",
+    "isOptional": true
+  },
+  "CP_PASS": {
+    "defaultValue": "${{secret(32)}}",
+    "description": "REQUIRED. Password for the `admin` account (used for uploads / writes / management). Auto-generated a random 32-char secret per deployment — find it under your Railway service variables after deploy. Anonymous clients stay read-only (open file sharing).",
+    "isOptional": true
+  }
+}

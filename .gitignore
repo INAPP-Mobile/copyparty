@@ -1,0 +1,14 @@
+# macOS / editor cruft
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# local test artifacts
+*.log
