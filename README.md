@@ -1,6 +1,6 @@
-# Deploy and Share Files
+# Deploy and Host
 
-[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/copyparty)
+[![Deploy to Railway](https://railway.app/button.svg)](https://railway.com/deploy/1_Q3KC)
 
 copyparty is a fast, minimal, self-contained web file server, cloud-client, and cloud-drive in a **single pure-Python package**. It serves files over HTTP, FTP, and Samba — with a modern web UI for browsing, uploading, and sharing — and needs no external database or object storage. Anonymous visitors get **read-only** access (open file sharing); the `admin` account gets **write** access (upload, delete, rename). Deploy it on Railway in minutes.
 
