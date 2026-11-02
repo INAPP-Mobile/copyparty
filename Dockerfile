@@ -17,7 +17,7 @@
 #   • Runs as root so first boot can always create/own /srv on a fresh volume.
 # =============================================================================
 
-FROM python:3.12-slim
+FROM python:3.14-slim
 
 LABEL org.opencontainers.image.source="https://github.com/9001/copyparty"
 LABEL org.opencontainers.image.template.source="https://railway.com/deploy/copyparty"
